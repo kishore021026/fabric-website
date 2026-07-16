@@ -28,13 +28,13 @@ export default function Home() {
       */}
 
       {/* CONCEPT 1: Interactive Fabric Mesh */}
-       <FabricCanvas />
+       {/* <FabricCanvas /> */}
 
       {/* CONCEPT 3: Generative Particle Threads (ACTIVE) */}
      {/* <ParticleThreads /> */}
 
       {/* CONCEPT 5: Liquid Silk Orb */}
-      {/* <SilkOrb /> */}
+      <SilkOrb />
 
       {/* CONCEPT 6: Glass Woven Knot */}
       {/* <WovenKnot /> */}
