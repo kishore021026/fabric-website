@@ -31,10 +31,10 @@ export default function Home() {
        {/* <FabricCanvas /> */}
 
       {/* CONCEPT 3: Generative Particle Threads (ACTIVE) */}
-     <ParticleThreads />
+     {/* <ParticleThreads /> */}
 
       {/* CONCEPT 5: Liquid Silk Orb */}
-      {/* <SilkOrb /> */}
+      <SilkOrb />
 
       {/* CONCEPT 6: Glass Woven Knot */}
       {/* <WovenKnot /> */}
