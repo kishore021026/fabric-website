@@ -1,8 +1,20 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
+
+// Imports
+import FabricCanvas from '../components/FabricCanvas'
+import ParticleThreads from '../components/ParticleThreads'
 import SilkOrb from '../components/SilkOrb'
+import WovenKnot from '../components/WovenKnot'
 
 export default function Home() {
+  
+  // 1. SET YOUR ACTIVE COMPONENT HERE
+  const activeComponent = 'FabricCanvas'; // Options: 'SilkOrb', 'WovenKnot', 'FabricCanvas', 'ParticleThreads'
+
+  // 2. LOGIC: Side-by-side for Orb/Knot, Full-screen for others
+  const isSideBySide = ['SilkOrb', 'WovenKnot'].includes(activeComponent);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
@@ -14,19 +26,18 @@ export default function Home() {
   }
 
   return (
-    <main className="relative flex flex-col justify-center min-h-[calc(100vh-100px)] px-6 md:px-24 py-12 overflow-hidden bg-[#F7F6F3]">
+    // If isSideBySide, we use flex-row. If not, we use absolute/full-screen behavior
+    <main className={`min-h-[calc(100vh-100px)] flex flex-col ${isSideBySide ? 'md:flex-row' : ''} items-center px-6 md:px-24 py-12 bg-[#F7F6F3] relative`}>
       
-      <SilkOrb />
-
+      {/* Container 1: Text Content */}
       <motion.div 
-        className="max-w-4xl z-10 pointer-events-none pr-4 md:pr-0" // Added pr-4 to push text away from edge
+        className={`w-full ${isSideBySide ? 'md:w-1/2' : 'w-full'} z-10`}
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         <motion.h1 
           variants={itemVariants}
-          // Changed text-5xl to text-4xl on mobile
           className="text-4xl sm:text-6xl md:text-8xl font-serif leading-[0.9] tracking-tight text-stone-950 mb-6"
         >
           Honest materials.<br />
@@ -40,7 +51,7 @@ export default function Home() {
           We source raw, ethically harvested fibers globally for master tailors and architectural designers.
         </motion.p>
         
-        <motion.div variants={itemVariants} className="pointer-events-auto">
+        <motion.div variants={itemVariants}>
           <Link 
             to="/shop" 
             className="inline-block px-8 py-4 bg-stone-950 text-white rounded-full text-xs font-bold uppercase tracking-widest hover:bg-[#8B6E4E] transition-all"
@@ -49,6 +60,21 @@ export default function Home() {
           </Link>
         </motion.div>
       </motion.div>
+
+      {/* Container 2: Visual Component */}
+      <div className={`w-full ${isSideBySide ? 'md:w-1/2 h-[400px] md:h-[600px] mt-8 md:mt-0 flex items-center justify-center overflow-visible pr-6 md:pr-12' : 'absolute inset-0'}`}>
+        
+        {/* SWITCHING GUIDE: 
+            Update the 'activeComponent' variable at the top of this file 
+            and uncomment the corresponding component below.
+        */}
+
+        {activeComponent === 'FabricCanvas' && <FabricCanvas />}
+        {activeComponent === 'ParticleThreads' && <ParticleThreads />}
+        {activeComponent === 'SilkOrb' && <SilkOrb />}
+        {activeComponent === 'WovenKnot' && <WovenKnot />}
+        
+      </div>
     </main>
   )
 }
