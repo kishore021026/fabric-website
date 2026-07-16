@@ -1,3 +1,9 @@
+git init
+git add .
+git commit -m "First production build: Catalog with 3D models and Bag context"
+
+
+
 # Logs
 logs
 *.log
