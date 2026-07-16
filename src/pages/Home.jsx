@@ -10,7 +10,7 @@ import WovenKnot from '../components/WovenKnot'
 export default function Home() {
   
   // 1. SET YOUR ACTIVE COMPONENT HERE
-  const activeComponent = 'SilkOrb'; // Options: 'SilkOrb', 'WovenKnot', 'FabricCanvas', 'ParticleThreads'
+  const activeComponent = 'ParticleThreads'; // Options: 'SilkOrb', 'WovenKnot', 'FabricCanvas', 'ParticleThreads'
 
   // 2. LOGIC: Side-by-side for Orb/Knot, Full-screen for others
   const isSideBySide = ['SilkOrb', 'WovenKnot'].includes(activeComponent);
